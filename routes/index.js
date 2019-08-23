@@ -6,6 +6,7 @@ router.get('/category', Category.getCategories);
 router.get('/products', Products.getProducts);
 router.get('/add-category', Category.addCatgory);
 router.get('/add-product', Products.addProduct);
+router.get('/delete-product', Products.deleteProduct);
 router.post('/save-category', Category.saveCategory);
 router.post('/save-product', Products.saveProduct);
 /* GET home page. */

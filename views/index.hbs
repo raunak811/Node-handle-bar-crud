@@ -1,5 +1,5 @@
 <h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+
 
 
 <div class="container">
@@ -24,7 +24,7 @@
                     <tr>
                         <td>{{product_name}}</td>
                         <td>{{name}}</td>
-                         <td>Action</td>
+                         <td><a href="javascript:void(0)" onClick="deleteProduct({{id}})">Delete</a> </td>
                     </tr>
                    
                     {{else}}
@@ -35,10 +35,10 @@
                 </tbody>
             </table>
 
-            <nav aria-label="Page navigation example">
+            <nav aria-label="Page navigation example" style="float: right">
                 <ul class="pagination">
                     {{#each paging}}
-                    <li class="page-item"><a class="page-link" href="#">{{no}}</a></li>
+                    <li class="page-item"><a onClick="doPaging({{no}})" class="page-link" >{{no}}</a></li>
                     {{/each}}
                     
                     
@@ -48,3 +48,41 @@
         </div>
     </div>
 </div>
+
+<script>
+    function doPaging(no) {
+        window.location.href = `?page=${no}`
+    }
+
+    function deleteProduct(id) {
+        //alert(window.location.href)
+        var url = window.location.href+`/?delete=${id}`
+        //alert(url)
+
+        $.ajax({
+
+            url : `/delete-product/?id=${id}`,
+            type : 'GET',
+            data : {
+                
+            },
+            dataType:'json',
+            success : function(data) {              
+                console.log(data)
+                alert('Deleted succesfully')
+                window.location.reload()
+            },
+            error : function(request,error)
+            {
+                alert("Request: "+JSON.stringify(request));
+            }
+        });
+
+    }
+
+    $(document).ready(function(){
+
+        
+        
+    })
+</script>

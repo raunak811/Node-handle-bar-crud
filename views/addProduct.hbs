@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form id="product_form" action="/save-product" method="POST">
+                <div class="form-group">
+                    <label for="category">Product Name</label>
+                    <input type="text" class="form-control" id="product" aria-describedby="productHelp"
+                        placeholder="Enter Product Name" name="product">
+                    <small id="categoryHelp" class="form-text text-muted">Do not use special characters</small>
+                </div>
+                <div class="form-group">
+                    <label for="category">Product category</label>
+                    <select class="form-control" name="category_id">
+                        <option value="">Select</option>
+                        {{#each categories}}
+                        <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                    
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>&nbsp;
+                <button class="btn btn-danger">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $('#product_form').ajaxForm({
+            dataType:'json',
+            success: function(data) {
+
+                alert(data.message)
+                window.location.href = "/"
+
+            },
+            error: function(error) {
+                console.error(error);
+            }
+        })
+    })
+</script>

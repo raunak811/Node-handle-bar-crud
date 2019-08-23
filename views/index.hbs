@@ -1,0 +1,50 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col text-right">
+            <a href="/add-product"> Add Product</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Category Name</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                   
+                </thead>
+                <tbody>
+                    {{#each products}}
+                    <tr>
+                        <td>{{product_name}}</td>
+                        <td>{{name}}</td>
+                         <td>Action</td>
+                    </tr>
+                   
+                    {{else}}
+                    <tr>
+                        <td class="text-center"><span >No Products found</span></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    {{#each paging}}
+                    <li class="page-item"><a class="page-link" href="#">{{no}}</a></li>
+                    {{/each}}
+                    
+                    
+                </ul>
+                </nav>
+
+        </div>
+    </div>
+</div>

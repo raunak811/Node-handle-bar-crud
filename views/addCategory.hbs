@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form id="category_form" action="/save-category" method="POST">
+                <div class="form-group">
+                    <label for="category">Category Name</label>
+                    <input type="text" class="form-control" id="category" aria-describedby="categoryHelp"
+                        placeholder="Enter Category Name" name="category">
+                    <small id="categoryHelp" class="form-text text-muted">Do not use special characters</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>&nbsp;
+                <button class="btn btn-danger">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $('#category_form').ajaxForm({
+            dataType:'json',
+            succes: function(data) {
+
+            },
+            error: function(error) {
+                console.error(error);
+            }
+        })
+    })
+</script>

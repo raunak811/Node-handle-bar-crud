@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col text-right">
+            <a href="/add-category"> Add Categories</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Category Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each categories}}
+                    <tr>
+                        <td>{{name}}</td>
+                    </tr>
+                    {{else}}
+                    <tr>
+                        <td class="text-center"><span >No Categories found</span></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
